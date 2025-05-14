@@ -56,11 +56,11 @@ def index():
                     error_message = "Kunci Extended Vigenère tidak boleh kosong."
                 else:
                     if operation == "encrypt":
-                        cipher_bytes = extended_vigenere_encrypt(content.encode(), key.encode())
-                        result = cipher_bytes.hex()
+                            cipher_bytes = extended_vigenere_encrypt(content.encode(), key.encode())
+                            result = cipher_bytes.decode('latin-1') 
                     else:
                         try:
-                            cipher_bytes = bytes.fromhex(content.strip())
+                            cipher_bytes = content.encode('latin-1')
                             plain_bytes = extended_vigenere_decrypt(cipher_bytes, key.encode())
                             result = plain_bytes.decode('utf-8', errors='replace')
                         except Exception as e:
